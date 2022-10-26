@@ -8,6 +8,7 @@ import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
             {
                 path: '/courses',
@@ -42,8 +47,8 @@ export const router = createBrowserRouter([
                 ]
             },
             {
-                path: '/register',
-                element: <Register></Register>
+                path: '/checkout/:id',
+                element: <PrivateRoute><div>Checkout Page</div></PrivateRoute>
             }
         ]
     }
