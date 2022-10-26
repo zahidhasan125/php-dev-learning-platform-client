@@ -4,7 +4,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     return (
-        <div className="card w-96 my-20 mx-auto bg-base-100 shadow-xl image-full">
+        <div className="card w-96 my-4 mx-auto bg-base-100 shadow-xl image-full">
             <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="form-control w-full max-w-xs">
@@ -23,7 +23,10 @@ const Login = () => {
                     <p>New to PHP.DEV?<Link to="/register" className="link link-accent ml-2">Create an account.</Link></p>
                 </div>
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary">LOGIN</button>
+                    <button className="btn btn-accent">LOGIN</button>
+                </div>
+                <div>
+                    <p>Forget Password?<Link to="/register" className="link link-accent ml-2">Request reset password.</Link></p>
                 </div>
                 <div>
                     <button className="btn btn-outline btn-info mr-2">Login With<FaGoogle className='ml-1 text-2xl'></FaGoogle></button>

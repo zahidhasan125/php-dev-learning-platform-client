@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div className="card w-96 my-20 mx-auto bg-base-100 shadow-xl image-full">
+        <div className="card w-96 my-4 mx-auto bg-base-100 shadow-xl image-full">
             <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="form-control w-full max-w-xs">
@@ -34,7 +34,7 @@ const Register = () => {
                     <p>Already have an account?<Link to="/login" className="link link-accent ml-2">Login Here</Link></p>
                 </div>
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary">REGISTER</button>
+                    <button className="btn btn-accent">REGISTER</button>
                 </div>
             </div>
         </div>
