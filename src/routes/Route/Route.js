@@ -1,11 +1,13 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../layouts/Main/Main';
+import Blog from '../../pages/Blog/Blog';
 import CheckOut from '../../pages/CheckOut/CheckOut';
 import CourseCards from '../../pages/CourseCards/CourseCards';
 import CourseDetails from '../../pages/CourseDetails/CourseDetails';
 import Courses from '../../pages/Courses/Courses';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
+import FAQ from '../../pages/FAQ/FAQ';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+            {
+                path: '/faq',
+                element: <FAQ></FAQ>
             },
             {
                 path: '/courses',
