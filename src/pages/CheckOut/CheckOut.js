@@ -9,7 +9,7 @@ const CheckOut = () => {
     }
     return (
         <div className=''>
-            <div className="card w-4/5 mx-auto mt-4 bg-slate-200 shadow-lg">
+            <div className="card w-4/5 mx-auto mt-4 bg-slate-200 dark:bg-slate-400 dark:text-sky-700 shadow-lg">
                 <figure className="px-10 pt-10">
                     <img src={courseDetails?.courseImg} alt="Shoes" className="rounded-xl w-96" />
                 </figure>
