@@ -5,9 +5,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const Login = () => {
     const { userLogin, providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState("");
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -34,6 +36,8 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message);
+                toast.error(error.message);
             })
     }
     const handleGoogleLogin = () => {
@@ -45,6 +49,8 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message);
+                toast.error(error.message);
             })
     }
     const handleGithubLogin = () => {
@@ -56,6 +62,8 @@ const Login = () => {
         })
         .catch(error => {
             console.log(error);
+            setError(error.message);
+            toast.error(error.message);
         })
     }
     return (
@@ -75,13 +83,16 @@ const Login = () => {
                     <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full text-black max-w-xs" required/>
                 </div>
                 <div>
+                    {error && <p className='text-red-600'>{error}</p>}
+                </div>
+                <div>
                     <p>New to PHP.DEV?<Link to="/register" className="link link-accent ml-2">Create an account.</Link></p>
                 </div>
                 <div className="card-actions justify-center">
                     <button className="btn btn-accent" type='submit'>LOGIN</button>
                 </div>
                 <div>
-                    <p>Forget Password?<Link to="/register" className="link link-accent ml-2">Request reset password.</Link></p>
+                    <p>Forget Password?<Link to="/forget" className="link link-accent ml-2">Request reset password.</Link></p>
                 </div>
                 <div>
                     <button onClick={handleGoogleLogin} className="btn btn-outline btn-info mr-2">Login With<FaGoogle className='ml-1 text-2xl'></FaGoogle></button>

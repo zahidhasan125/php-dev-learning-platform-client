@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
     const { createUser, updateUserProfile, verifyUserEmail, userSignOut } = useContext(AuthContext);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleRegisterForm = (event) => {
@@ -28,11 +30,13 @@ const Register = () => {
                 userSignOut()
                     .then(() => { })
                     .catch(error => {
-                    console.log(error);
+                        setError(error.message);
+                        toast.error(error.message);
                     })
             })
             .catch(error => {
-                console.log(error);
+                setError(error.message);
+                toast.error(error.message);
             })
 
 
@@ -43,7 +47,8 @@ const Register = () => {
                     console.log(user);
                 })
                 .catch(error => {
-                    console.log(error);
+                    setError(error.message);
+                    toast.error(error.message);
                 })
         }
 
@@ -54,7 +59,8 @@ const Register = () => {
                     console.log(user);
                 })
                 .catch(error => {
-                    console.log(error);
+                    setError(error.message);
+                    toast.error(error.message);
                 })
         }
 
@@ -86,6 +92,9 @@ const Register = () => {
                         <span className="label-text text-gray-100">Your Password</span>
                     </label>
                     <input name='password' type="password" placeholder="Type Password Here" className="input input-bordered w-full text-black max-w-xs" required />
+                </div>
+                <div>
+                    {error && <p className='text-red-400'>{error}</p>}
                 </div>
                 <div>
                     <p>Already have an account?<Link to="/login" className="link link-accent ml-2">Login Here</Link></p>
