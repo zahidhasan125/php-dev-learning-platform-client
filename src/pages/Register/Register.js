@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { createUser, updateUserProfile, verifyUserEmail } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyUserEmail, userSignOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegisterForm = (event) => {
         event.preventDefault();
@@ -17,10 +19,17 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                form.reset();
                 updateUserInfo();
                 sendVerifyEmail();
                 console.log(user);
-                form.reset();
+                toast.error("Thanks for Registering. Please verify your Email Address. (Check Spam folder)");
+                navigate('/login');
+                userSignOut()
+                    .then(() => { })
+                    .catch(error => {
+                    console.log(error);
+                    })
             })
             .catch(error => {
                 console.log(error);

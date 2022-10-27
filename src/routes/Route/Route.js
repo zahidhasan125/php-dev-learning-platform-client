@@ -10,6 +10,7 @@ import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import FAQ from '../../pages/FAQ/FAQ';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
+import Profile from '../../pages/Other/Profile';
 import Register from '../../pages/Register/Register';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
             },
             {
                 path: '/faq',

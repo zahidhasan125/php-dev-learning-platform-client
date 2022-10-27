@@ -8,7 +8,7 @@ const CourseDetails = () => {
         <div>
 
             <div className="card w-full bg-slate-200 shadow-xl">
-                <figure><img className='rounded-xl' src={courseDetails?.courseImg} alt="Shoes" /></figure>
+                <figure className='pt-4'><img className='rounded-xl' src={courseDetails?.courseImg} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-3xl">
                         {courseDetails?.courseTitle}
