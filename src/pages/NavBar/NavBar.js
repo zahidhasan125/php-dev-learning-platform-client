@@ -72,7 +72,9 @@ const NavBar = () => {
                             </div>
                         </li>
                         <li className='lg:hidden d-flex mx-2'>
-                            <Link to="/register" className="btn btn-outline btn-success">Register</Link>
+                            {
+                                !user?.uid && <Link to="/register" className="btn btn-outline btn-success">Register</Link>
+                            }                            
                         </li>
                     </ul>
                 </div>
