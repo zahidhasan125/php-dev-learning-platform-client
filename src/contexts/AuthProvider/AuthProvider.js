@@ -18,14 +18,17 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUserProfile = (userInfo) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, userInfo);
     }
 
     const verifyUserEmail = () => {
+        setLoading(true);
         return sendEmailVerification(auth.currentUser);
     }
 
     const passwordReset = (email) => {
+        setLoading(true);
         return sendPasswordResetEmail(auth, email)
     }
     const userLogin = (email, password) => {

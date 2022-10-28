@@ -5,7 +5,7 @@ import { FaWindowClose } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Profile = () => {
-    const { user, updateUserProfile } = useContext(AuthContext);
+    const { user, loading, updateUserProfile } = useContext(AuthContext);
     const { displayName, photoURL, email } = user;
 
     const photoUrlRef = useRef(photoURL);
@@ -17,6 +17,7 @@ const Profile = () => {
 
         updateUserProfile(userInfo)
             .then((result) => {
+                loading(true)
                 toast.success("Successfully Updated!")
             })
             .catch(error => {
@@ -25,7 +26,7 @@ const Profile = () => {
     }
     return (
         <div className='w-4/5 mx-auto dark:bg-slate-400 bg-slate-200 my-4 rounded-lg'>
-            <div className="card w-96 my-4 mx-auto bg-base-100 shadow-xl image-full">
+            <div className="card lg:w-96 w-full my-4 mx-auto bg-base-100 shadow-xl image-full">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <div className="form-control w-full max-w-xs">
@@ -56,8 +57,8 @@ const Profile = () => {
             {/* Profile Edit Modal */}
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box dark:bg-slate-400 ">
-                    <form onSubmit={handleProfileUpdate} className="card w-96 my-4 mx-auto bg-base-100 shadow-xl image-full">
+                <div className="modal-box dark:bg-slate-400 w-full">
+                    <form onSubmit={handleProfileUpdate} className="card lg:w-96 w-full my-4 mx-auto bg-base-100 shadow-xl image-full">
                         <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                         <div className="card-body">
                             <div className="form-control w-full max-w-xs">

@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
     return (
         <div className='lg:w-4/5 w-9/10 mx-auto bg-slate-200 dark:bg-slate-400 my-4 py-4 px-12 rounded-lg'>
-            <h2 className='text-2xl font-semibold text-center underline mb-4 dark:text-orange-700'>Frequently Asked Questions(FAQ)</h2>
+            <h2 className='text-2xl font-semibold text-center underline mb-4 dark:text-orange-700'>Asked Questions & Answers</h2>
             <div className="collapse rounded-md mb-2">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title bg-primary text-primary-content">
@@ -50,7 +50,7 @@ const Blog = () => {
                     <p>Node allows developers to write JavaScript code that runs directly in a computer process itself instead of in a browser.</p>
                 </div>
             </div>
-                        
+
         </div >
     );
 };
