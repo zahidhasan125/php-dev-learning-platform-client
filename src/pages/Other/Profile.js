@@ -5,7 +5,7 @@ import { FaWindowClose } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Profile = () => {
-    const { user, loading, updateUserProfile } = useContext(AuthContext);
+    const { user, updateUserProfile } = useContext(AuthContext);
     const { displayName, photoURL, email } = user;
 
     const photoUrlRef = useRef(photoURL);
@@ -17,8 +17,9 @@ const Profile = () => {
 
         updateUserProfile(userInfo)
             .then((result) => {
-                loading(true)
-                toast.success("Successfully Updated!")
+                toast.success("Successfully Updated! Update will be shown when you logout & re-login again.", {
+                    duration: 6000,
+                })
             })
             .catch(error => {
                 toast.error(error.message)
