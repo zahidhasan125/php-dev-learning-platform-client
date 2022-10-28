@@ -53,24 +53,24 @@ export const router = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch("http://localhost:5000/courses"),
+                loader: () => fetch("https://php-dev-learning-platform-server-side.vercel.app/courses"),
                 children: [
                     {
                         path: '/courses/',
                         element: <CourseCards></CourseCards>,
-                        loader: () => fetch("http://localhost:5000/courses")
+                        loader: () => fetch("https://php-dev-learning-platform-server-side.vercel.app/courses")
                     },
                     {
                         path: '/courses/details/:id',
                         element: <CourseDetails></CourseDetails>,
-                        loader: ({params})=>fetch(`http://localhost:5000/course/${params.id}`)
+                        loader: ({params})=>fetch(`https://php-dev-learning-platform-server-side.vercel.app/course/${params.id}`)
                     }
                 ]
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckOut /></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({params})=>fetch(`https://php-dev-learning-platform-server-side.vercel.app/course/${params.id}`)
             }
         ]
     }

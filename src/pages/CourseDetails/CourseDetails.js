@@ -15,7 +15,7 @@ const CourseDetails = () => {
     })
     return (
         <div className="card w-full bg-slate-200 shadow-xl dark:bg-slate-600 dark:text-sky-400">
-            <div onClick={handlePrintPdf} className='my-4 mr-4 flex justify-end'>
+            <div onClick={handlePrintPdf} className='my-4 mr-4 flex justify-end cursor-pointer'>
                 <FaDownload className='text-2xl'></FaDownload>
             </div>
             <div ref={componentRef} style={{ width: '100%', height: '100%' }}>
