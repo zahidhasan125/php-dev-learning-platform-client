@@ -11,7 +11,7 @@ const NavBar = () => {
     const userTheme = localStorage.getItem("theme")
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    const [isDark, setIsDark] = useState(!userTheme);
+    const [isDark, setIsDark] = useState(userTheme || 'light');
 
     const { user, userSignOut } = useContext(AuthContext);
 
@@ -46,7 +46,6 @@ const NavBar = () => {
 
     const handleDarkMode = () => {
         setIsDark(!isDark)
-        console.log(isDark);
         themeSwitch();
     }
     themeCheck();
@@ -68,13 +67,13 @@ const NavBar = () => {
                                 <label className="label pt-0">
                                     <span className="label-text text-gray-800">Dark Mode</span>
                                 </label>
-                                <input onClick={handleDarkMode} type="checkbox" className="toggle" defaultChecked={!isDark} />
+                                <input onClick={handleDarkMode} type="checkbox" className="toggle" defaultChecked={isDark === 'dark' ? 'true' : 'false'} />
                             </div>
                         </li>
                         <li className='lg:hidden d-flex mx-2'>
                             {
                                 !user?.uid && <Link to="/register" className="btn btn-outline btn-success">Register</Link>
-                            }                            
+                            }
                         </li>
                     </ul>
                 </div>
@@ -116,7 +115,7 @@ const NavBar = () => {
                 <label className="label pt-0">
                     <span className="label-text text-gray-800">Dark Mode</span>
                 </label>
-                <input onClick={handleDarkMode} type="checkbox" className="toggle" defaultChecked={!isDark} />
+                <input onClick={handleDarkMode} type="checkbox" className="toggle" defaultChecked={isDark === 'dark' ? true : false} />
             </div>
         </div>
     );

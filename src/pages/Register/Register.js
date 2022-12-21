@@ -7,63 +7,72 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Register = () => {
     const { createUser, updateUserProfile, verifyUserEmail, userSignOut } = useContext(AuthContext);
     const [error, setError] = useState("");
+    const [photoURL, setPhotoURL] = useState('');
     const navigate = useNavigate();
 
     const handleRegisterForm = (event) => {
         event.preventDefault();
         const form = event.target;
         const displayName = form.name.value;
-        const photoURL = form.photoURL.value;
+        const image = form.image.files[0];
+        const formData = new FormData();
+        formData.append('image', image);
         const email = form.email.value;
         const password = form.password.value;
-        const userInfo = { displayName, photoURL };
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                form.reset();
-                updateUserInfo();
-                sendVerifyEmail();
-                console.log(user);
-                toast.error("Thanks for Registering. Please verify your Email Address. (Check Spam folder)");
-                navigate('/login');
-                userSignOut()
-                    .then(() => { })
-                    .catch(error => {
-                        setError(error.message);
-                        toast.error(error.message);
-                    })
+        fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbbKey}`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    setPhotoURL(imgData.data.url);
+                    createUser(email, password)
+                        .then(result => {
+                            // const user = result.user;
+                            form.reset();
+                            updateUserInfo();
+                        })
+                        .catch(error => {
+                            setError(error.message);
+                            toast.error(error.message);
+                        })
+
+
+                    const updateUserInfo = () => {
+                        const userInfo = { displayName, photoURL };
+                        updateUserProfile(userInfo)
+                            .then(result => {
+                                sendVerifyEmail();
+                            })
+                            .catch(error => {
+                                setError(error.message);
+                                toast.error(error.message);
+                            })
+                    }
+
+                    const sendVerifyEmail = () => {
+                        verifyUserEmail()
+                            .then(result => {
+                                // const user = result?.user;
+                                toast.success("Thanks for Registering. Please verify your Email Address. (Check Spam folder)");
+                                userSignOut()
+                                    .then(() => {
+                                        navigate('/login');
+                                    })
+                                    .catch(error => {
+                                        setError(error.message);
+                                        toast.error(error.message);
+                                    })
+                            })
+                            .catch(error => {
+                                setError(error.message);
+                                toast.error(error.message);
+                            })
+                    }
+                }
             })
-            .catch(error => {
-                setError(error.message);
-                toast.error(error.message);
-            })
-
-
-        const updateUserInfo = () => {
-            updateUserProfile(userInfo)
-                .then(result => {
-                    const user = result.user;
-                    console.log(user);
-                })
-                .catch(error => {
-                    setError(error.message);
-                    toast.error(error.message);
-                })
-        }
-
-        const sendVerifyEmail = () => {
-            verifyUserEmail()
-                .then(result => {
-                    const user = result.user;
-                    console.log(user);
-                })
-                .catch(error => {
-                    setError(error.message);
-                    toast.error(error.message);
-                })
-        }
-
     }
     return (
         <form onSubmit={handleRegisterForm} className="card w-96 my-4 mx-auto bg-base-100 shadow-xl image-full">
@@ -77,9 +86,9 @@ const Register = () => {
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text text-gray-100">Your Photo URL</span>
+                        <span className="label-text text-gray-100">Upload Your Photo</span>
                     </label>
-                    <input name='photoURL' type="text" placeholder="Type Your Photo URL here" className="input input-bordered w-full text-black max-w-xs" />
+                    <input name='image' type="file" className="file-input file-input-bordered file-input-info w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
