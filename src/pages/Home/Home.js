@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CarouselItem1 from '../../assets/carousel-1.jpg'
 import CarouselItem2 from '../../assets/carousel-2.jpg'
 import CarouselItem3 from '../../assets/carousel-3.jpg'
 import CarouselItem4 from '../../assets/carousel-4.jpg'
+import UnlockPremium from './UnlockPremium/UnlockPremium';
+import CourseList from './CourseList/CourseList';
 
 const Home = () => {
+    const courseList = useLoaderData();
     return (
         <div className='w-4/5 mx-auto mt-4'>
             <div className='text-base-400 dark:text-green-600 py-4 text-center'>
@@ -46,6 +49,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <CourseList courseList={courseList} />
+            <UnlockPremium />
         </div>
     );
 };

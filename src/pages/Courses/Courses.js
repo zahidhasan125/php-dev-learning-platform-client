@@ -12,7 +12,7 @@ const Courses = () => {
                     }
                 </span>
                 <span className='col-span-2'>
-                <Outlet></Outlet>
+                    <Outlet></Outlet>
                 </span>
                 <span className="lg:hidden inline-grid grid-cols-1 h-fit gap-4 border-2 rounded-lg pl-4 py-4 bg-slate-200 dark:bg-slate-600">
                     {

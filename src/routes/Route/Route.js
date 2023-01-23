@@ -24,7 +24,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch("https://php-dev-learning-platform-server-side.vercel.app/courses")
             },
             {
                 path: '/login',
