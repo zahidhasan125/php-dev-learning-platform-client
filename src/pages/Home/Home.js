@@ -11,7 +11,7 @@ const Home = () => {
     const courseList = useLoaderData();
     return (
         <div className='w-4/5 mx-auto mt-4'>
-            <div className='text-base-400 dark:text-green-600 py-4 text-center'>
+            <div className='text-base-400 dark:text-green-600 py-4 text-center w-full md:w-3/4 lg:w-3/5 mx-auto'>
                 <h1 className='text-4xl font-bold underline'>Welcome</h1>
                 <h4 className='text-2xl font-semibold'>Welcome to the PHP.DEV free interactive PHP tutorial.</h4>
                 <p className='text-lg'>Whether you are an experienced programmer or not, this website is intended for everyone who wishes to learn the PHP programming language.</p>
