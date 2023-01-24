@@ -77,7 +77,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl dark:text-sky-800"><img className='w-24' src={Logo} alt='user profile pic' />PHP.DEV</Link>
+                <Link to='/' className="btn btn-ghost text-4xl font-extrabold dark:text-sky-800"><img className='w-24' src={Logo} alt='user profile pic' />PHP.DEV</Link>
             </div>
             <div className="navbar-end hidden font-semibold dark:text-sky-600 lg:flex">
                 <ul className="menu menu-horizontal p-0">
